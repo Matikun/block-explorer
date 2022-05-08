@@ -7,11 +7,17 @@ const ConnectToMetamask = ({ hasInitialResponse, isSupported }) => {
 	const { requireInstall, connect, provider } = useWeb3();
 
 	return !isSupported && hasInitialResponse ? (
-		<Button onClick={() => changeNetwork('ethereum', provider)}>{messages.login.switch}</Button>
+		<Button type='primary' onClick={() => changeNetwork('ethereum', provider)}>
+			{messages.login.switch}
+		</Button>
 	) : requireInstall ? (
-		<Button onClick={goToMetamask}>{messages.login.install}</Button>
+		<Button type='primary' onClick={goToMetamask}>
+			{messages.login.install}
+		</Button>
 	) : (
-		<Button onClick={connect}>{messages.login.connect}</Button>
+		<Button type='primary' onClick={connect}>
+			{messages.login.connect}
+		</Button>
 	);
 };
 

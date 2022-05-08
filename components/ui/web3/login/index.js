@@ -13,7 +13,9 @@ const Login = () => {
 	return (
 		<>
 			{isLoading ? (
-				<Button disabled={true}>{messages.common.loading}</Button>
+				<Button loading={isLoading} type='primary' disabled={true}>
+					{messages.common.loading}
+				</Button>
 			) : account && isSupported ? (
 				<>
 					<h2>{messages.login.welcome}</h2>
