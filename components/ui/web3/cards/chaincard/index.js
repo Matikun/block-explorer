@@ -3,19 +3,29 @@ import useEthPrice from '@contexts/web3/hooks/useEthPrice';
 import useNetwork from '@contexts/web3/hooks/useNetwork';
 import Loader from '@components/ui/common/loader';
 import { messages } from '@messages';
-import { columnsBreakpoints } from '@styles/theme';
+import { oneColumnBreakpoints } from '@styles/theme';
+import Logo from '@components/ui/common/logo';
 
 const ChainCard = () => {
 	const { ethPrice } = useEthPrice();
 	const { network } = useNetwork();
 	return (
 		<Card>
-			<Descriptions column={columnsBreakpoints} bordered labelStyle={{ fontWeight: 'bold' }}>
+			<Descriptions column={oneColumnBreakpoints} bordered labelStyle={{ fontWeight: 'bold' }}>
 				<Descriptions.Item label={messages.wallet.network}>
-					{network ? network : <Loader small={true} />}
+					{network ? network : <Loader size='small' />}
 				</Descriptions.Item>
 				<Descriptions.Item label={messages.wallet.ethPrice}>
-					{ethPrice ? `US${ethPrice}` : <Loader small={true} />}
+					{ethPrice ? (
+						<div style={{ display: 'flex' }}>
+							<span>US${ethPrice}</span>
+							<span>
+								<Logo src={'/small-eth.webp'} height={20} width={20} />
+							</span>
+						</div>
+					) : (
+						<Loader size='small' />
+					)}
 				</Descriptions.Item>
 			</Descriptions>
 		</Card>

@@ -1,15 +1,9 @@
-const Loader = ({ small = false }) => {
+import { Spin } from 'antd';
+
+const Loader = ({ size }) => {
 	return (
-		<div
-			className={`${small ? 'sk-chase-small' : 'sk-chase'}`}
-			style={{ margin: `${small ? 'auto' : '2em auto'}` }}
-		>
-			<div className='sk-chase-dot'></div>
-			<div className='sk-chase-dot'></div>
-			<div className='sk-chase-dot'></div>
-			<div className='sk-chase-dot'></div>
-			<div className='sk-chase-dot'></div>
-			<div className='sk-chase-dot'></div>
+		<div style={{ margin: `${!size === 'small' ? 'auto' : '2em auto'}`, textAlign: 'center' }}>
+			<Spin size={size} />
 		</div>
 	);
 };

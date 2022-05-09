@@ -1,9 +1,9 @@
-import { useWeb3 } from '@contexts/web3';
-import { blockFormtNumbers, fetcher } from '@utils';
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
-import { getLastBlockrUrl } from '../urls';
+import { useWeb3 } from '@contexts/web3';
 import useGetLastBlockNumber from './useGetLastBlockNumber';
+import { blockFormatNumbers, fetcher } from '@utils';
+import { getLastBlockrUrl } from '../urls';
 
 const useGetBlockByNumber = () => {
 	const { hexToNumber } = useWeb3();
@@ -19,10 +19,8 @@ const useGetBlockByNumber = () => {
 
 	useEffect(() => {
 		result &&
-			setBlocks((prev) => {
-				const copy = [...prev];
-				copy.unshift(blockFormtNumbers(result, hexToNumber));
-				return copy;
+			setBlocks((prevBlocks) => {
+				return [blockFormatNumbers(result, hexToNumber), ...prevBlocks];
 			});
 	}, [result, hexToNumber]);
 

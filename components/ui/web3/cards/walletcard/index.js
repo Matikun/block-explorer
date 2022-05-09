@@ -3,9 +3,9 @@ import useWalletInfo from '@contexts/web3/hooks/useWalletInfo';
 import Loader from '@components/ui/common/loader';
 import { messages } from '@messages';
 import { Card, Descriptions } from 'antd';
-import { columnsBreakpoints } from '@styles/theme';
+import { oneColumnBreakpoints } from '@styles/theme';
 
-const WalletCard = () => {
+const WalletCard = ({}) => {
 	const { balance, account } = useWalletInfo();
 	const { isSupported } = useNetwork();
 
@@ -13,10 +13,12 @@ const WalletCard = () => {
 		<>
 			{account && isSupported && (
 				<Card>
-					<Descriptions column={columnsBreakpoints} bordered labelStyle={{ fontWeight: 'bold' }}>
+					<Descriptions column={oneColumnBreakpoints} bordered labelStyle={{ fontWeight: 'bold' }}>
 						<Descriptions.Item label={messages.wallet.account}>{account}</Descriptions.Item>
 						<Descriptions.Item label={messages.wallet.balance}>
-							{balance ?? <Loader small={true} />} {messages.wallet.token}
+							{balance ?? <Loader size='small' />}
+							{` `}
+							{balance ? messages.wallet.token : ''}
 						</Descriptions.Item>
 					</Descriptions>
 				</Card>

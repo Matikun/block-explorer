@@ -21,7 +21,7 @@ export const NETWORKS = {
 	1666600000: 'Harmony Main net',
 };
 
-export const NETWORK_ID = app.NEXT_PUBLIC_NETWORK_ID;
+export const NETWORK_ID = app.PUBLIC_NETWORK_ID;
 
 export const toHexaDecimalNumber = (number) => Number(number).toString(16);
 

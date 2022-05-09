@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-
 import Web3Context from './Web3Context';
 import useLoadProvider from './hooks/useLoadProvider';
+import { showErrorAlert } from '@utils';
 
 export default function Web3Provider({ children }) {
 	const web3Api = useLoadProvider();
@@ -26,7 +26,7 @@ export default function Web3Provider({ children }) {
 						method: 'eth_requestAccounts',
 					});
 				} catch (error) {
-					console.log(error, 'cannot retrieve account!');
+					showErrorAlert('cannot retrieve account!');
 				}
 			},
 		};

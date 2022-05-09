@@ -8,11 +8,7 @@ export const messages = {
 		switch: 'Switch to Ethereum',
 		connect: 'Log in',
 		install: 'Install Metamask',
-		welcome: 'Welcome!',
-	},
-	cards: {
-		start: 'Start Survey',
-		info: 'Only Authenticated users can Answer the Survey!! Please Connect your Wallet',
+		welcome: 'Welcome !',
 	},
 	wallet: {
 		balance: 'Balance:',
@@ -20,15 +16,6 @@ export const messages = {
 		network: 'Network:',
 		ethPrice: 'ETH Price:',
 		account: 'Account:',
-	},
-	overview: {
-		answer: 'Answer',
-		answers: 'Your Answers',
-		warning: 'You need to answer at least one question! try again!',
-		tryagain: 'Try again!',
-		submit: 'Submit Your Answers',
-		wait: 'Wait Until transaction completed to get 1 QUIZ',
-		sent: 'The transaction was sent successfully.',
 	},
 	details: {
 		title: 'Transaction Details',
