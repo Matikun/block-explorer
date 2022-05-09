@@ -23,7 +23,7 @@ const SearchForm = () => {
 
 	const fetch = async () => {
 		setError(false);
-		const validAdress = await web3.utils.isAddress(selectedAddress);
+		const validAdress = (await web3?.utils.isAddress(selectedAddress)) ?? true; // if we dont have web3, we validate the address in the request.
 		if (!validAdress) {
 			setError('invalid Address');
 			return setTimeout(() => {
