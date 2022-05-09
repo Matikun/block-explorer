@@ -8,10 +8,10 @@ export const showAlert = ({ type, title, message }) => {
 	});
 };
 
-export const showErrorAlert = (message, { title }) => {
+export const showErrorAlert = (message, title = 'Ooops...') => {
 	return showAlert({
 		type: 'error',
-		title: title ?? 'Ooops...',
-		text: message,
+		title: title,
+		message,
 	});
 };

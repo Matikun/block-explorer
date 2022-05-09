@@ -13,7 +13,7 @@ const Login = () => {
 	return (
 		<>
 			{isLoading ? (
-				<Button loading={isLoading} type='secondary' ghost disabled={true}>
+				<Button type='secondary' ghost disabled={true}>
 					{messages.common.loading}
 				</Button>
 			) : account && isSupported ? (
