@@ -22,7 +22,7 @@ export const messages = {
 		txhash: 'Transaction hash:',
 		blockhash: 'Block Hash',
 		status: 'Status:',
-		block: "'Block:'",
+		block: 'Block:',
 		timestamp: 'TimeStamp:',
 		confirmations: 'Confirmations:',
 		from: 'From:',

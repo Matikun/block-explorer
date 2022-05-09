@@ -19,7 +19,14 @@ const BlocksTable = () => {
 		router.push('/search');
 	};
 
-	return lastestBlocks && <DataTable columns={blockColum} dataSource={lastestBlocks} handler={setBlockTx} />;
+	return (
+		lastestBlocks && (
+			<div style={{ marginBottom: '40px' }}>
+				<h3>Lastest Blocks</h3>
+				<DataTable columns={blockColum} dataSource={lastestBlocks} handler={setBlockTx} />
+			</div>
+		)
+	);
 };
 
 export default BlocksTable;

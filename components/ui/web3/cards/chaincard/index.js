@@ -5,16 +5,21 @@ import Loader from '@components/ui/common/loader';
 import { messages } from '@messages';
 import { oneColumnBreakpoints } from '@styles/theme';
 import Logo from '@components/ui/common/logo';
+import { useWeb3 } from '@contexts/web3';
 
 const ChainCard = () => {
+	const { requireInstall } = useWeb3();
 	const { ethPrice } = useEthPrice();
 	const { network } = useNetwork();
 	return (
 		<Card>
 			<Descriptions column={oneColumnBreakpoints} bordered labelStyle={{ fontWeight: 'bold' }}>
-				<Descriptions.Item label={messages.wallet.network}>
-					{network ? network : <Loader size='small' />}
-				</Descriptions.Item>
+				{!requireInstall && (
+					<Descriptions.Item label={messages.wallet.network}>
+						{network ? network : <Loader size='small' />}
+					</Descriptions.Item>
+				)}
+
 				<Descriptions.Item label={messages.wallet.ethPrice}>
 					{ethPrice ? (
 						<div style={{ display: 'flex' }}>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import detectEthereumProvider from '@metamask/detect-provider';
 import Web3 from 'web3';
 import initialState from '../initialState';
+import { showErrorAlert } from '@utils';
 
 const useLoadProvider = () => {
 	const [web3Api, setWeb3Api] = useState(initialState);

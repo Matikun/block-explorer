@@ -9,6 +9,7 @@ const blockFormatNumbers = (obj, hexToNumFn) => {
 	objCopy['gasPrice'] = hexToNumFn(objCopy['gasPrice']);
 	objCopy['gas'] = hexToNumFn(objCopy['gas']);
 	objCopy['value'] = hexToNumFn(objCopy['value']);
+	objCopy['nonce'] = hexToNumFn(objCopy['nonce']);
 	return objCopy;
 };
 
