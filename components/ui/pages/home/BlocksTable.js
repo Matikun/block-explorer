@@ -2,6 +2,7 @@ import DataTable from '@components/ui/common/table';
 import { blockColum } from '@components/ui/common/table/columns';
 import { useEtherscanState } from '@contexts/etherscan';
 import { useWeb3 } from '@contexts/web3';
+import { blockFormatNumbers } from '@utils';
 import { useRouter } from 'next/router';
 import React from 'react';
 
