@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useEtherscanState } from '@contexts/etherscan';
 import Search from 'antd/lib/input/Search';
-import { Col, Form, Row } from 'antd';
+import { Col, Row, Typography } from 'antd';
 import useSWR from 'swr';
 import { fetcher } from '@utils';
 import { useRouter } from 'next/router';
 import { useWeb3 } from '@contexts/web3';
 import { getTransactionsByAddressUrl } from '@services/etherescan/urls';
+import { etherscan_response } from 'enums';
 
 const SearchForm = () => {
 	const router = useRouter();
@@ -19,7 +20,7 @@ const SearchForm = () => {
 		() => (shouldFetch ? getTransactionsByAddressUrl(selectedAddress) : null),
 		fetcher
 	);
-	console.log(selectedAddress, 'address');
+
 	const fetch = async () => {
 		setError(false);
 		const validAdress = await web3.utils.isAddress(selectedAddress);
@@ -37,15 +38,12 @@ const SearchForm = () => {
 	};
 
 	useEffect(() => {
-		if (data?.status == '0') {
+		if (data?.status == etherscan_response.error) {
 			setError(data.message);
-			console.log(data);
 		}
-		if (data?.status == '1') {
-			console.log(data);
+		if (data?.status == etherscan_response.success) {
 			//set the transaction data
 			setSelectedTransactions(data.result);
-
 			//move to search page
 			router.push('/search');
 		}
@@ -65,7 +63,7 @@ const SearchForm = () => {
 					loading={isValidating}
 					value={selectedAddress}
 				/>
-				{error && <p className='error'>{error}</p>}
+				{error && <Typography.Text type='danger'>{error}</Typography.Text>}
 			</Col>
 		</Row>
 	);

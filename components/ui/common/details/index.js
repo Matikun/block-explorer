@@ -1,9 +1,12 @@
+import { useWeb3 } from '@contexts/web3';
 import { messages } from '@messages';
 import { oneColumnBreakpoints } from '@styles/theme';
+import { fromWeiToEth } from '@utils';
 import { Descriptions, Tag } from 'antd';
 import { tx_status } from 'enums';
 
 const DetailCard = ({ data }) => {
+	const { web3 } = useWeb3();
 	const {
 		blockHash,
 		blockNumber,
@@ -47,9 +50,9 @@ const DetailCard = ({ data }) => {
 				)}
 				<Descriptions.Item label={messages.details.from}>{from}</Descriptions.Item>
 				<Descriptions.Item label={messages.details.to}>{to}</Descriptions.Item>
-				<Descriptions.Item label={messages.details.value}>{value}</Descriptions.Item>
-				<Descriptions.Item label={messages.details.gas}>{gas}</Descriptions.Item>
-				<Descriptions.Item label={messages.details.gasprice}>{gasPrice}</Descriptions.Item>
+				<Descriptions.Item label={messages.details.value}>{fromWeiToEth(value, web3)} Eth</Descriptions.Item>
+				<Descriptions.Item label={messages.details.gas}>{gas} Wei </Descriptions.Item>
+				<Descriptions.Item label={messages.details.gasprice}>{fromWeiToEth(gasPrice, web3)} Eth</Descriptions.Item>
 				<Descriptions.Item label={messages.details.nonce}>{nonce}</Descriptions.Item>
 			</Descriptions>
 		</>

@@ -11,7 +11,8 @@ const useGetBlockByNumber = () => {
 	const { blockNumber } = useGetLastBlockNumber();
 
 	//checking if the  blocks array already has the blocknumber to prevent unnecessary api calls
-	const shouldFetch = !blocks.some((block) => block.number === blockNumber);
+	const shouldFetch = !blocks.some((block) => block.number === hexToNumber(blockNumber));
+
 	const { data, isValidating, error } = useSWR(shouldFetch ? getLastBlockrUrl({ blockNumber }) : null, fetcher);
 
 	const isLoading = !data && isValidating;

@@ -6,7 +6,7 @@ import WalletCard from '@components/ui/web3/cards/walletcard';
 export default function Home() {
 	return (
 		<div>
-			<h1 className='text-center'>Block Explorer</h1>
+			<h1 className='text-center'>Block Explorer for Ethereum Blockchain</h1>
 			<SearchForm />
 			<div className='card-container-flex'>
 				<ChainCard />
