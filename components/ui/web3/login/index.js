@@ -13,12 +13,14 @@ const Login = () => {
 	return (
 		<>
 			{isLoading ? (
-				<Button loading={isLoading} type='primary' disabled={true}>
+				<Button loading={isLoading} type='secondary' ghost disabled={true}>
 					{messages.common.loading}
 				</Button>
 			) : account && isSupported ? (
 				<>
-					<h2>{messages.login.welcome}</h2>
+					<Button type='secondary' ghost disabled={true} style={{ color: '#fff' }}>
+						{messages.login.welcome}
+					</Button>
 				</>
 			) : (
 				<ConnectToMetamask hasInitialResponse={hasInitialResponse} isSupported={isSupported} />

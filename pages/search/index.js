@@ -1,23 +1,24 @@
+import { useState } from 'react';
+import { Modal } from 'antd';
+import { useEtherscanState } from '@contexts/etherscan';
+import ArrowBack from '@components/ui/common/arrowback';
 import DetailCard from '@components/ui/common/details';
 import DataTable from '@components/ui/common/table';
-import useColumns from '@components/ui/common/table/useColumns';
-import { useEtherscanState } from '@contexts/etherscan';
-import { arrObjAddKey } from '@utils';
-import { Modal } from 'antd';
-import { useState } from 'react';
+import { columnsSearch } from '@components/ui/common/table/columns';
+import { addHashKeyToObjArray } from '@utils';
 
 const SearchTx = () => {
-	const { columnsSearch } = useColumns();
 	const { selectedTransactions } = useEtherscanState();
 	const [selectedTx, setSelectedTx] = useState(null);
 
-	const dataSource = selectedTransactions && arrObjAddKey(selectedTransactions);
+	const dataSource = selectedTransactions && addHashKeyToObjArray(selectedTransactions);
 
 	const handler = (data) => setSelectedTx(data);
-	console.log(selectedTransactions);
 
 	return (
 		<>
+			<ArrowBack to={'/'} />
+			<h2 className='text-center'>Transactions</h2>
 			{dataSource && <DataTable dataSource={dataSource} columns={columnsSearch} handler={handler} />}
 			{selectedTx && (
 				<Modal

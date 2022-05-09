@@ -1,17 +1,22 @@
 import { Login } from '@components/ui/web3';
-import { Row, Col, PageHeader } from 'antd';
+import Logo from '../logo';
 
 const Navbar = () => {
 	return (
-		<Row align='center' justify='center'>
-			<Col xs={24} sm={22} md={20} lg={18} xl={16}>
-				<PageHeader
-					className='site-page-header'
-					subTitle='BlockExplorer'
-					extra={<Login />}
+		<div className='flex-center-container'>
+			<div>
+				<Logo
+					src='/logo_ripio.svg'
+					height={25}
+					width={60}
+					style={{ color: '#fff' }}
+					className='filter-logo-ripio'
 				/>
-			</Col>
-		</Row>
+			</div>
+			<div>
+				<Login />
+			</div>
+		</div>
 	);
 };
 

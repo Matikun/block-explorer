@@ -1,4 +1,5 @@
 import { messages } from '@messages';
+import { oneColumnBreakpoints } from '@styles/theme';
 import { Descriptions, Tag } from 'antd';
 import { tx_status } from 'enums';
 
@@ -23,7 +24,7 @@ const DetailCard = ({ data }) => {
 	return (
 		<>
 			<Descriptions
-				column={{ xs: 1, md: 1, lg: 1, xl: 1 }}
+				column={oneColumnBreakpoints}
 				bordered
 				title={messages.details.title}
 				labelStyle={{ fontWeight: 'bold' }}

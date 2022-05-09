@@ -18,7 +18,7 @@ const useLoadProvider = () => {
 				});
 			} else {
 				setWeb3Api((api) => ({ ...api, isLoading: false }));
-				console.error('please install Metamask');
+				showErrorAlert('please install Metamask for a better user experience');
 			}
 		};
 
